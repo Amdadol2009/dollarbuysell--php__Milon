@@ -7,5 +7,9 @@ $db_password = '';
 $mysqli = new mysqli($db_host, $db_username, $db_password, $db_name) or die("can not connect to database");
 $mysqli->set_charset("utf8");
 
-define('SITE_TITLE', '24x7 Exchange (BD)');
 define('IS_LIVE', false);
+
+define('SITE_TITLE', '24x7 Exchange (BD)');
+
+define('BASE_URL', IS_LIVE ? 'https://dollarbuysellbd.com/' : 'http://localhost/dollarbuysell--php_Milon/');
+define('IMAGE_ROOT', BASE_URL);

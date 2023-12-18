@@ -15,16 +15,20 @@ if ($_GET) {
     $stmt->bind_param('ssi', $trx, $acc, $id);
     if ($stmt->execute()) {
         if ($referer == 'api') {
-            echo json_encode(array(
-                'status' => true
-            ), JSON_UNESCAPED_UNICODE);
+            echo (
+                true
+            );
         } else {
             header('location: ' . $_SERVER['HTTP_REFERER']);
         }
     }else{
-        echo json_encode(array(
-            'status' => false
-        ), JSON_UNESCAPED_UNICODE);
+        if ($referer == 'api') {
+            echo (
+                false
+            );
+        } else {
+            header('location: ' . $_SERVER['HTTP_REFERER']);
+        }
     }
 }
 
