@@ -10,9 +10,9 @@ if (isset($_GET['delete'])) {
 ?>
 <div class="flex between center mb-2">
   <h2>Currencies</h2>
-  <a class="btn btn-outline-secondary flex center" href="?currency&add">
+  <a class="btn btn-primary flex center" href="?currency&add">
     <span class="material-icons">add</span>
-    Add
+    Add currency
   </a>
 </div>
 <div class="table-responsive mb-3">

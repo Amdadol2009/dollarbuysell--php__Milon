@@ -6,7 +6,7 @@ include_once 'functions.php';
 </div>
 <div class="table-responsive mb-5">
 <?php
-$stmt = $mysqli->query("SELECT *, (SELECT `name` FROM `dollarbuysell--currencies` WHERE `id`=`send_gateway`) as `sender`, (SELECT `name` FROM `dollarbuysell--currencies` WHERE `id`=`receive_gateway`) as `receiver`,`status` FROM `dollarbuysell--orders` ORDER BY `id` DESC");
+$stmt = $mysqli->query("SELECT *, (SELECT `name` FROM `dollarbuysell--currencies` WHERE `id`=`send_gateway`) as `sender`, (SELECT `name` FROM `dollarbuysell--currencies` WHERE `id`=`receive_gateway`) as `receiver`, (SELECT `name` FROM `dollarbuysell--users` WHERE `id`=`user_id`) as `name`,`status` FROM `dollarbuysell--orders` ORDER BY `id` DESC");
 if ($stmt->num_rows > 0) {
 ?><table class='table table-striped'>
       <thead>
@@ -16,6 +16,7 @@ if ($stmt->num_rows > 0) {
               <th>Amount Sent</th>
               <th>Amount Receive</th>
               <th>Trx ID</th>
+              <th>To account</th>
               <th>User Name</th>
               <th>Date</th>
               <th>Status</th>
@@ -32,12 +33,20 @@ if ($stmt->num_rows > 0) {
                   <td><?php echo $item->receiver; ?></td>
                   <td><?php echo $item->amount_sent; ?></td>
                   <td><?php echo $item->amount_receive; ?></td>
-                  <td><?php echo $item->trx_id; ?></td>
-                  <td><?php echo $item->user_id; ?></td>
+                  <td style="color: green; text-transform:uppercase"><?php echo $item->trx_id; ?></td>
+                  <td style="color: blue; text-transform:uppercase"><?php echo $item->account_no; ?></td>
+                  <td><?php echo $item->name; ?></td>
                   <td><?php echo $item->date; ?></td>
                   <td>
                       <div class="flex center justify">
-                          <a href="#" class="me-1"><span class="material-icons"><?php echo $item->status == 0 ? 'downloading' : 'download_done'; ?></span></a>
+                          <a href="javascript:void(0)" 
+                          id="row-id-<?php echo $item->id;?>" 
+                          onclick="toggleStats(<?php echo $item->id;?>,<?php echo $item->user_id;?>,this.id)" 
+                          class="me-1">
+                            <span class="material-icons">
+                                <?php echo $item->status == 0 ? 'downloading' : 'download_done'; ?>
+                            </span>
+                        </a>
                       </div>
                   </td>
               </tr>
@@ -47,6 +56,7 @@ if ($stmt->num_rows > 0) {
                   for ($i=0; $i < 6 - $stmt->num_rows; $i++) { 
                       ?>
                       <tr>
+                          <td>&nbsp;</td>
                           <td>&nbsp;</td>
                           <td>&nbsp;</td>
                           <td>&nbsp;</td>

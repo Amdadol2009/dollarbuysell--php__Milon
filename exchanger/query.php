@@ -11,8 +11,8 @@ $stmt = $mysqli->query("SELECT `amount_send`, `amount_receive`, (SELECT `stock` 
 if ($stmt->num_rows > 0) {
     $arr = [];
     while ($item = $stmt->fetch_object()) {
-        $icon1 = 'http://localhost/dollarbuysell--php/media/icons/' . $item->sender_icon;
-        $icon2 = 'http://localhost/dollarbuysell--php/media/icons/' . $item->receiver_icon;
+        $icon1 = 'http://localhost/dollarbuysell--php_Milon/media/icons/' . $item->sender_icon;
+        $icon2 = 'http://localhost/dollarbuysell--php_Milon/media/icons/' . $item->receiver_icon;
 
         echo trim($item->amount_send .",". $item->amount_receive .",". $item->reserve.",". $item->min.",".$item->sender_name .",". $icon1 .",". $item->receiver_name.",". $icon2);
     }
