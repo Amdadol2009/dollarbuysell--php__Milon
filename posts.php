@@ -9,7 +9,8 @@
   <?php
   $stmt = $mysqli->query("SELECT *, (SELECT `id` FROM `dollarbuysell--currencies` WHERE `gateway_sender`=`id`) as `senderId`, (SELECT `id` FROM `dollarbuysell--currencies` WHERE `gateway_receiver`=`id`) as `receiverId`, (SELECT `name` FROM `dollarbuysell--currencies` WHERE `gateway_sender`=`id`) as `from`, (SELECT `name` FROM `dollarbuysell--currencies` WHERE `gateway_receiver`=`id`) as `to`, (SELECT `icon` FROM `dollarbuysell--currencies` WHERE `gateway_sender`=`id`) as `icon`, (SELECT `icon` FROM `dollarbuysell--currencies` WHERE `gateway_receiver`=`id`) as `icon2`, (SELECT `stock` FROM `dollarbuysell--currencies` WHERE `gateway_sender`=`id`) as `stock`, (SELECT `prefix` FROM `dollarbuysell--currencies` WHERE `gateway_sender`=`id`) as `prefix`, `account_no` FROM `dollarbuysell--posts` ORDER BY `id` DESC");
   if ($stmt->num_rows > 0) {
-  ?><table>
+  ?>
+    <table>
       <thead>
         <tr>
           <th>&nbsp;</th>
