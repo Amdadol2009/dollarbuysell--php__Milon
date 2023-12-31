@@ -56,6 +56,10 @@ include './components/head.php';
 							<a class="nav-link <?php echo isset($_GET['currency']) ? 'active' : ''; ?>"
 								href="?currency">Currencies</a>
 						</li>
+						<li class="nav-item">
+							<a class="nav-link <?php echo isset($_GET['settings']) ? 'active' : ''; ?>"
+								href="?settings">Settings</a>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -76,16 +80,16 @@ include './components/head.php';
 			if (isset($_GET['posts'])) {
 				include 'all-posts.php';
 			}
-			?>
 
-			<?php
 			if (!$_GET || isset($_GET['requests']) || isset($_GET['date'])) {
 				include 'requests.php';
 			}
-			?>
-			<?php
+
 			if (isset($_GET['users'])) {
 				include 'users.php';
+			}
+			if (isset($_GET['settings'])) {
+				include 'settings.php';
 			}
 			?>
 
