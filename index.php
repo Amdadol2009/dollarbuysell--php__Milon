@@ -79,7 +79,7 @@ include './components/head.php';
 			?>
 
 			<?php
-			if (!$_GET || isset($_GET['requests'])) {
+			if (!$_GET || isset($_GET['requests']) || isset($_GET['date'])) {
 				include 'requests.php';
 			}
 			?>

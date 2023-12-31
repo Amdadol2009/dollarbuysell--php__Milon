@@ -1,5 +1,14 @@
 <?php
 include_once 'functions.php';
+if(isset($_GET['d'])){
+    $id=$_GET['id'];
+    $q=$mysqli->prepare("DELETE FROM `dollarbuysell--users` WHERE `id`=?");
+    $q->bind_param('i',$id);
+    if($q->execute()){
+        header("location: ?users");
+    }
+
+}
 ?>
 
 <div class="flex between center mb-2">
@@ -42,8 +51,8 @@ include_once 'functions.php';
                         <td><?php echo $item->reg_date; ?></td>
                         <td>
                             <div class="flex center justify">
-                                <a href="?users&edit&id=<?php echo $item->id; ?>" class="me-1"><span class="material-icons">delete</span></a>
-                                <a href="?users&edit&id=<?php echo $item->id; ?>"><span class="material-icons">edit</span></a>
+                                <a href="?users&d&id=<?php echo $item->id; ?>" class="me-1"><span class="material-icons">delete</span></a>
+                                <!-- <a href="?users&edit&id=<?php //echo $item->id; ?>"><span class="material-icons">edit</span></a> -->
                             </div>
                         </td>
                     </tr>
