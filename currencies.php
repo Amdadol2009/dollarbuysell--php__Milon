@@ -26,6 +26,7 @@ if ($stmt->num_rows > 0) {
           <th>Stock</th>
           <th>Min. Order</th>
           <th>Prefix</th>
+          <th>Account No</th>
           <th>&nbsp;</th>
         </tr>
       </thead>
@@ -42,6 +43,7 @@ $folder_path = "./media/icons/";
             <td><?php echo $item->stock; ?></td>
             <td><?php echo $item->min; ?></td>
             <td class="text-upper"><?php echo $item->prefix; ?></td>
+            <td><?php echo $item->accNo; ?></td>
             <td class="flex center justify"><a href="currencies.php?delete&id=<?php echo $item->id; ?>"><span class="material-icons">delete</span></a></td>
 
           </tr><?php

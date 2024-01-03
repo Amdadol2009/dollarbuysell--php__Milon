@@ -8,6 +8,7 @@ include 'db.php';
 
 $name = $_POST['name'];
 $prefix = $_POST['prefix'];
+$accNo = $_POST['accNo'];
 $stock = $_POST['stock'];
 $min = $_POST['min'];
 
@@ -84,9 +85,9 @@ if (isset($_POST['add'])) {
 if (isset($_POST['edit'])) {
     $id = $_POST['edit'];
 
-    $sql = "UPDATE `dollarbuysell--currencies` SET `name`=?, `prefix`=?, stock=?, min=? WHERE `id`=?";
+    $sql = "UPDATE `dollarbuysell--currencies` SET `name`=?, `accNo`=?, `prefix`=?, stock=?, min=? WHERE `id`=?";
     $stmt = $mysqli->prepare($sql);
-    $stmt->bind_param('ssdii', $name, $prefix, $stock,$min, $id);
+    $stmt->bind_param('sssdii', $name, $accNo, $prefix, $stock,$min, $id);
     $stmt->execute();
     header('location: ' . $_SERVER['HTTP_REFERER']);
 }

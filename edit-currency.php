@@ -9,6 +9,7 @@ if ($stmt->num_rows > 0) {
         $prefix = $item->prefix;
         $stock = $item->stock;
         $min = $item->min;
+        $accNo = $item->accNo;
         $src = './media/icons/' . $item->icon;
     }
 }
@@ -56,6 +57,11 @@ if ($stmt->num_rows > 0) {
                 <input class="form-control" type="file" name="icon" id="icon">
             </div>
 
+            <div class="form-floating">
+                <input class="form-control" required placeholder="Account No" type="text" name="accNo" id="accNo" value="<?php echo $accNo; ?>">
+                <label for="accNo">Account No</label>
+            </div>
+            
         </div>
         <div class="card-footer">
             <button class="btn btn-outline-secondary" type="reset">Clear</button>
